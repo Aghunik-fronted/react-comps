@@ -1,15 +1,7 @@
 import './App.css'
-import React, { useEffect, useRef, useState } from 'react'
-import SectionTitle from './components/SectionTitle'
-import Header from './components/Header'
-import Modal from './components/Modal'
-import Card from './components/Card'
-import Tabs from './components/Tabs'
-import Accordeon from './components/Accordeon'
-import Form from './components/Form'
-import Todo from './components/To-do'
+import React, { useState } from 'react';
 
-function App() {
+function AppCopy() {
 
   const products = [
     { id:1, title: 'Ноутбук', price: 10000, popular: true},
@@ -82,4 +74,4 @@ function App() {
   )
 }
 
-export default App
+export default AppCopy
