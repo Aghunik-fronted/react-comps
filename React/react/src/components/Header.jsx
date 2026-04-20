@@ -1,9 +1,11 @@
+import { Heart } from "lucide-react"
 export default function Header() {
     const title = 'Мой первый код на React'
     return (
         <>
-            <h1 className="classname">{title}</h1>
-            <p>lorem</p>
+            <button>
+                <Heart size={24} color="red" />
+            </button>
         </>
     )
     
