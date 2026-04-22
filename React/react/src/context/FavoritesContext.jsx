@@ -9,9 +9,29 @@ const initialState = {
 function favoritesReducer(state, action) {
   switch (action.type) {
     case "ADD_MOVIE": {
-      const isExist = state.items.find(m => m.filmId === action.payload.filmId);
-      if (isExist) return state;
+      const exist = state.items.some(
+        (item) => item.filmId === action.payload.id,
+      );
+      if (exist) return state;
       return { ...state, items: [...state.items, action.payload] };
+    }
+
+    case "TOGGLE_MOVIE": {
+      const exists = state.items.some(
+        (item) => item.filmId === action.payload.filmId,
+      );
+      if (exists) {
+        return {
+          ...state,
+          items: state.items.filter(
+            (item) => item.filmId !== action.payload.filmId,
+          ),
+        };
+      }
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+      };
     }
     default:
       return state;
@@ -29,9 +49,18 @@ export function FavoritesProvider({ children }) {
     dispatch({ type: "ADD_MOVIE", payload: movie });
   }
 
-  // ВАЖНО: return должен быть ЗДЕСЬ, внутри функции FavoritesProvider
+  function toggleMovie(movie) {
+    dispatch({ type: "TOGGLE_MOVIE", payload: movie });
+  }
+
+  function isFavorite(id) {
+    return state.items.some((item) => item.filmId == id);
+  }
+
   return (
-    <FavoritesContext.Provider value={{ favorites: state.items, addMovie }}>
+    <FavoritesContext.Provider
+      value={{ favorites: state.items, addMovie, toggleMovie, isFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

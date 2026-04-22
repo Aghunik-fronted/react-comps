@@ -15,7 +15,6 @@ export default function SearchPages() {
 
     searchMoviesByKeyboard(submittedQuery, 1, controller.signal)
       .then((data) => {
-        // У Кинопоиска массив фильмов лежит в data.films
         setMovies(data.films || []);
       })
       .catch((err) => {
