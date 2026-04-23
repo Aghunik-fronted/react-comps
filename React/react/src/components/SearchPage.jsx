@@ -3,8 +3,8 @@ import { searchMoviesByKeyboard } from "../lib/api";
 import { useFavorites } from "../context/FavoritesContext";
 import { Heart } from "lucide-react";
 import { Button } from "../components/ui/Button";
-import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css"; 
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
@@ -36,14 +36,16 @@ export default function SearchPage() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
-      <Swiper>
-        <SwiperSlider>1</SwiperSlider>
-        <SwiperSlider>2</SwiperSlider>
-        <SwiperSlider>3</SwiperSlider>
-        <SwiperSlider>4</SwiperSlider>
-        <SwiperSlider>5</SwiperSlider>
-        <SwiperSlider>6</SwiperSlider>
-      </Swiper>
+      <Swiper
+          spaceBetween={20}
+          slidesPerView={3}
+          className="rounded-xl"
+        >
+          <SwiperSlide className="bg-emerald-100 p-10 rounded-xl text-center">Фильм 1</SwiperSlide>
+          <SwiperSlide className="bg-emerald-100 p-10 rounded-xl text-center">Фильм 2</SwiperSlide>
+          <SwiperSlide className="bg-emerald-100 p-10 rounded-xl text-center">Фильм 3</SwiperSlide>
+          <SwiperSlide className="bg-emerald-100 p-10 rounded-xl text-center">Фильм 4</SwiperSlide>
+        </Swiper>
       <form onSubmit={handleSubmit} className="flex gap-2 mb-8">
         <input
           value={query}
